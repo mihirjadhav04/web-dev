@@ -60,6 +60,39 @@ h2 {
   margin-bottom: 20px;
 }
 
+.cart-item {
+  background-color: #444444; /* Slightly lighter than the product background */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Add padding for better spacing */
+  margin-bottom: 8px; /* Space between cart items */
+  border-radius: 5px; /* Match product styling */
+}
+
+.cart-item span {
+  flex-grow: 1; /* Allow span to grow and take available space */
+}
+
+.remove-btn {
+  background-color: #ff4d4d; /* Red color for remove button */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #ff3333; /* Darker red on hover */
+}
+
+.remove-btn:focus {
+  outline: none;
+}
+
 #cart-total {
   text-align: right;
 }
