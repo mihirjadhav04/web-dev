@@ -1,0 +1,111 @@
+/* styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 400px;
+  padding: 20px;
+  background-color: #282828;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffdd57; /* Bright yellow for headings */
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 45%;
+  padding: 12px;
+  background-color: #444444;
+  border: 1px solid #ffdd57; /* Bright border */
+  border-radius: 5px;
+  color: #ffffff;
+  outline: none;
+  margin: 3px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #6200ea; /* Highlight border on focus */
+  background-color: #555555; /* Slightly lighter on focus */
+}
+
+button {
+  padding: 12px;
+  background-color: #ff4081; /* Bright pink */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #c60055; /* Darker pink on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+#expense-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#expense-list li {
+  background-color: #444444;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#expense-list li:hover {
+  background-color: #555555; /* Lighten on hover */
+}
+
+#total {
+  text-align: right;
+  font-size: 1.2em;
+}
+
+#total h3 {
+  color: #ffdd57; /* Bright yellow for total */
+}
+
+.hidden {
+  display: none;
+}
