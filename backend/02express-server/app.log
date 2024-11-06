@@ -1,0 +1,4 @@
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/register-student\",\"status\":\"201\",\"responseTime\":\"8.560\"}","timestamp":"2024-11-06T08:38:33.904Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/register-student\",\"status\":\"201\",\"responseTime\":\"2.277\"}","timestamp":"2024-11-06T10:24:53.534Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/list-registered-students\",\"status\":\"200\",\"responseTime\":\"0.739\"}","timestamp":"2024-11-06T10:25:19.991Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/registered-student/8\",\"status\":\"404\",\"responseTime\":\"0.905\"}","timestamp":"2024-11-06T10:25:31.495Z"}

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev" : "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "express"
@@ -14,7 +14,9 @@
   "author": "Mihir Jadhav",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "morgan": "^1.10.0",
+    "winston": "^3.16.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

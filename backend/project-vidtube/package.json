@@ -1,0 +1,27 @@
+{
+  "name": "vidtube",
+  "version": "1.0.0",
+  "description": "A project inspired by youtube.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev" : "nodemon src/index.js"
+  },
+  "keywords": [
+    "backend",
+    "node",
+    "express",
+    "mongoose"
+  ],
+  "author": "Mihir Jadhav",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.0"
+  }
+}
