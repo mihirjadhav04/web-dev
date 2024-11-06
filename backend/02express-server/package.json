@@ -1,0 +1,22 @@
+{
+  "name": "02express-server",
+  "version": "1.0.0",
+  "description": "A simple express server creation for testing.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev" : "nodemon index.js"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Mihir Jadhav",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
