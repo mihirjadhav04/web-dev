@@ -1,6 +1,7 @@
 // import and create express app and export the app.
 import express from 'express'
 import cors from "cors"
+import cookieParser from "cookie-parser"
 
 const app = express()
 
@@ -10,7 +11,6 @@ app.use(
         credentials: true
     })
 )
-
 
 // common middlewares.
 app.use(express.json({limit: "16kb"}))
@@ -22,8 +22,7 @@ app.use(express.urlencoded({
 )
 
 app.use(express.static("public"))
-
-
+app.use(cookieParser())
 
 // importing routes 
 import healthCheckRouter from "./routes/healthcheck.routes.js"
