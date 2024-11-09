@@ -10,6 +10,7 @@ const generateUserAccessAndRefreshToken = async (userId) => {
     try {
         // Find user in the database
         const user = await User.findById(userId);
+        console.log("USER : ", user);
         
         // If no user is found, throw an error
         if (!user) {
@@ -20,6 +21,9 @@ const generateUserAccessAndRefreshToken = async (userId) => {
         const accessToken = user.generateAccessToken();
         const refreshToken = user.generateRefreshToken();
         
+        console.log("accessToken : ", accessToken);
+        
+
         // Save the refresh token in the database
         user.refreshToken = refreshToken;
         await user.save({ validateBeforeSave: false });
@@ -111,6 +115,9 @@ const loginUser = asyncHandler(async (req, res) => {
     if (!isPasswordValid) {
         throw new ApiError(401, "Incorrect password.");
     }
+
+    console.log("isPasswordValid", isPasswordValid);
+    
 
     // Generate access and refresh tokens
     const { accessToken, refreshToken } = await generateUserAccessAndRefreshToken(user._id);

@@ -1,10 +1,15 @@
 import { Router } from "express"
-import { registerUser, loginUser } from "../controllers/user.controllers.js"
+import { 
+    registerUser, 
+    loginUser, 
+    logoutUser, 
+    refreshAccessToken 
+} from "../controllers/user.controllers.js"
 import { upload } from "../middlewares/multer.middleware.js"
 import { authMiddlewareJWT } from "../middlewares/auth.middleware.js"
 const router = Router()
 
-
+// unsecured routes
 router.route("/register").post(
     upload.fields([
         {
@@ -18,9 +23,10 @@ router.route("/register").post(
     ]),
     registerUser)
 
-// Route for user login
 router.route('/login').post(loginUser);
+router.route('/refresh-token').post(refreshAccessToken)
 
+// secured routes
 // Apply authMiddleware to ensure only authenticated users can access logout
 router.route("/logout").post(authMiddlewareJWT, logoutUser);
 
