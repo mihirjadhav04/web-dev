@@ -263,7 +263,51 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
 
 // })
 
+const getUserChannelProfile = asyncHandler( async (req, res) => {
+    const {username} = req.params
 
+    if(!username){
+        throw new ApiError(400, "Username is required!")
+    }
+
+    const channel = await User.aggregate(
+        [
+            {
+                $match: {
+                    username: username?.toLowerCase()
+                }
+            },
+            {
+                $lookup: {
+                    from: "subscriptions",
+                    localField: "_id",
+                    foreignField: "channel",
+                    as: "subscribers"
+                }
+            },
+            {
+                $lookup: {
+                    from: "subscriptions",
+                    localField: "_id",
+                    foreignField: "subscriber",
+                    as: "subscribedTo"
+                }
+            },
+            {
+                $addFields: {
+                    subscribersCount: {
+                        $size: "$subscribers"
+                    },
+                    channelsSubsribedToCount: {
+                        $size: "$subscribedTo"
+                    }
+                }
+            }
+        ]
+    )
+})
+
+const getWatchhistroy = asyncHandler( async (req, res) => {})
 
 export { 
     registerUser, 
