@@ -1,85 +1,121 @@
 "use client";
+
 import Link from "next/link";
 import React, { useEffect } from "react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-
-
-
 export default function SignupPage() {
-    const router = useRouter();
+    const router = useRouter(); // Next.js router for navigation
     const [user, setUser] = React.useState({
         email: "",
         password: "",
         username: "",
-    })
-    const [buttonDisabled, setButtonDisabled] = React.useState(true);
-    const [loading, setLoading] = React.useState(false);
+    }); // State for storing form input values
 
+    const [buttonDisabled, setButtonDisabled] = React.useState(true); // State to manage button enable/disable
+    const [loading, setLoading] = React.useState(false); // State to manage loading status during signup
+
+    // Function to handle signup when the button is clicked
     const onSignup = async () => {
         try {
-            setLoading(true);
-            const response = await axios.post("/api/users/signup", user);
+            setLoading(true); // Set loading to true to indicate signup process is in progress
+            const response = await axios.post("/api/users/signup", user); // Send POST request to signup API with user data
             console.log("Signup success", response.data);
-            router.push("/login");
-            
-        } catch (error:any) {
+            toast.success("Successfully Signed Up!");
+            router.push("/login"); // Redirect to login page upon successful signup
+        } catch (error: any) {
             console.log("Signup failed", error.message);
-            
-            toast.error(error.message);
-        }finally {
-            setLoading(false);
+            toast.error(error.message); // Display error message if signup fails
+        } finally {
+            setLoading(false); // Set loading to false once signup process is complete
         }
-    }
+    };
 
-    // to monitor state of user fields and then make the button enebled.[no empty fields]
+    // useEffect to monitor changes in the user input fields
+    // Enable the signup button if all fields (email, password, username) have values
     useEffect(() => {
-        if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0) {
-            setButtonDisabled(false);
+        if (user.email.length > 0 && user.password.length > 0 && user.username.length > 0) {
+            setButtonDisabled(false); // Enable button if all fields are filled
         } else {
-            setButtonDisabled(true);
+            setButtonDisabled(true); // Disable button if any field is empty
         }
-    }, [user]);
-
+    }, [user]); // Dependencies: triggers effect on changes to `user` state
 
     return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1>{loading ? "Processing..." : "Signup"}</h1>
-        <hr />
-        <label htmlFor="username">username</label>
-        <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-            id="username"
-            type="text"
-            value={user.username}
-            onChange={(e) => setUser({...user, username: e.target.value})}
-            placeholder="username"
-            />
-        <label htmlFor="email">email</label>
-        <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-            id="email"
-            type="text"
-            value={user.email}
-            onChange={(e) => setUser({...user, email: e.target.value})}
-            placeholder="email"
-            />
-        <label htmlFor="password">password</label>
-        <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-            id="password"
-            type="password"
-            value={user.password}
-            onChange={(e) => setUser({...user, password: e.target.value})}
-            placeholder="password"
-            />
-            <button
-            onClick={onSignup}
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">{buttonDisabled ? "No Signup" : "Signup"}</button>
-            <Link href="/login">Visit login page</Link>
-        </div>
-    )
+        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
+                <h1 className="text-2xl font-semibold text-center text-gray-800 mb-6">
+                    {loading ? "Processing..." : "Create an Account"}
+                </h1>
 
+                <div className="space-y-4">
+                    {/* Username input */}
+                    <div>
+                        <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+                            Username
+                        </label>
+                        <input
+                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 text-gray-700"
+                            id="username"
+                            type="text"
+                            value={user.username}
+                            onChange={(e) => setUser({ ...user, username: e.target.value })} // Update username in `user` state
+                            placeholder="Enter your username"
+                        />
+                    </div>
+
+                    {/* Email input */}
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                            Email
+                        </label>
+                        <input
+                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 text-gray-700"
+                            id="email"
+                            type="text"
+                            value={user.email}
+                            onChange={(e) => setUser({ ...user, email: e.target.value })} // Update email in `user` state
+                            placeholder="Enter your email"
+                        />
+                    </div>
+
+                    {/* Password input */}
+                    <div>
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                            Password
+                        </label>
+                        <input
+                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 text-gray-700"
+                            id="password"
+                            type="password"
+                            value={user.password}
+                            onChange={(e) => setUser({ ...user, password: e.target.value })} // Update password in `user` state
+                            placeholder="Enter your password"
+                        />
+                    </div>
+                </div>
+
+                {/* Signup button */}
+                <button
+                    onClick={onSignup}
+                    disabled={buttonDisabled} // Disable button based on `buttonDisabled` state
+                    className={`w-full py-3 mt-6 rounded-lg font-semibold text-white transition duration-300 ${
+                        buttonDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"
+                    }`}
+                >
+                    {buttonDisabled ? "Complete the form" : "Sign Up"}
+                </button>
+
+                {/* Login link */}
+                <p className="text-center text-sm text-gray-600 mt-4">
+                    Already have an account?{" "}
+                    <Link href="/login" className="text-indigo-600 hover:underline">
+                        Log in
+                    </Link>
+                </p>
+            </div>
+        </div>
+    );
 }
