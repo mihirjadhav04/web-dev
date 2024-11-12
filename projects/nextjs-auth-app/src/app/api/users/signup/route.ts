@@ -47,7 +47,7 @@ export async function POST(request: NextRequest){
         console.log(savedUser);
 
         // Send a verification email to the new user.
-        await sendMail({ email, emailType: "VERIFY", userId: savedUser._id })
+        // await sendMail({ email, emailType: "VERIFY", userId: savedUser._id })
         
         // Return a success response with the saved user details.
         return NextResponse.json(

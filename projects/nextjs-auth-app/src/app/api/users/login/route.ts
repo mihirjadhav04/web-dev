@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
         const { email, password } = reqBody
 
         // Log the request body for debugging purposes.
-        console.log(reqBody);
+        console.log("Login Request Body:", reqBody);
         
         // Check if a user with the provided email exists in the database.
         const user = await User.findOne({ email })
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
             ) 
         }
 
-        console.log(user);
+        console.log("Final User:", user);
 
         // Prepare token data with user details to be signed.
         const tokenData = {
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
         
         // Sign the token with the user data, using a secret key, and set an expiration of 1 day.
         const token = jwt.sign(tokenData, process.env.TOKEN_SECRET!, { expiresIn: '1d' })
-        console.log(token);
+        console.log("Token :", token);
         
         // Create a response message indicating a successful login.
         const response = NextResponse.json({
@@ -61,6 +61,8 @@ export async function POST(request: NextRequest) {
             success: true
         })
 
+        console.log("Final Step!");
+        
         // Set the token as a cookie with httpOnly enabled for security.
         response.cookies.set("token", token, { httpOnly: true })
         return response
