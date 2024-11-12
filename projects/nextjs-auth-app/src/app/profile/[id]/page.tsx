@@ -1,9 +1,13 @@
+// src/app/profile/[id]/page.tsx
 
+import React from "react";
 
-// import React from 'react'
-
-// export default function page({params}) {
-//   return (
-//     <div>page</div>
-//   )
-// }
+// Define your component function and export it as default
+export default function ProfilePage({ params }: { params: { id: string } }) {
+    return (
+        <div>
+            <h1>Profile Page</h1>
+            <p>Viewing profile for user ID: {params.id}</p>
+        </div>
+    );
+}

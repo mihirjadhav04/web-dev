@@ -5,10 +5,16 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
+// Define the structure of user data
+interface UserData {
+    _id: string;
+    username: string;
+    email: string;
+}
 
 export default function ProfilePage() {
     const router = useRouter(); // Next.js router for navigation
-    const [userData, setUserData] = useState(null); // State to store fetched user data
+    const [userData, setUserData] = useState<UserData | null>(null); // State to store fetched user data
     const [loading, setLoading] = useState(false); // State to handle loading state during data fetching
 
     // Function to fetch user details from API
