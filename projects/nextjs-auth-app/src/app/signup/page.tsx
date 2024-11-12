@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 export default function SignupPage() {
+    const [showPassword, setShowPassword] = useState(false);
     const router = useRouter(); // Next.js router for navigation
     const [user, setUser] = React.useState({
         email: "",
@@ -42,6 +44,10 @@ export default function SignupPage() {
             setButtonDisabled(true); // Disable button if any field is empty
         }
     }, [user]); // Dependencies: triggers effect on changes to `user` state
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -82,18 +88,27 @@ export default function SignupPage() {
                     </div>
 
                     {/* Password input */}
-                    <div>
+                    {/* Password input */}
+                    <div className="relative">
                         <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                             Password
                         </label>
                         <input
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 text-gray-700"
+                            className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 text-gray-700"
                             id="password"
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             value={user.password}
-                            onChange={(e) => setUser({ ...user, password: e.target.value })} // Update password in `user` state
+                            onChange={(e) => setUser({ ...user, password: e.target.value })}
                             placeholder="Enter your password"
                         />
+                        <button
+                            type="button"
+                            onClick={togglePasswordVisibility}
+                            className="absolute inset-y-0 top-5 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                            aria-label="Toggle password visibility"
+                        >
+                            {showPassword ? <AiFillEye size={24} /> : <AiFillEyeInvisible size={24} />}
+                        </button>
                     </div>
                 </div>
 
