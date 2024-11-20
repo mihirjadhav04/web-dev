@@ -1,0 +1,28 @@
+2024-11-20T13:47:20.510Z - Application Started! 
+2024-11-20T13:47:20.515Z - Application Event Occured! 
+2024-11-20T13:47:23.510Z - Current memory usage : 0.99 
+2024-11-20T13:47:26.511Z - Current memory usage : 1.04 
+2024-11-20T13:47:29.512Z - Current memory usage : 1.04 
+2024-11-20T13:47:32.513Z - Current memory usage : 0.82 
+2024-11-20T13:47:35.515Z - Current memory usage : 1.33 
+2024-11-20T13:47:38.517Z - Current memory usage : 1.06 
+2024-11-20T13:47:41.518Z - Current memory usage : 1.21 
+2024-11-20T13:47:44.519Z - Current memory usage : 4.15 
+2024-11-20T13:47:47.521Z - Current memory usage : 3.96 
+2024-11-20T13:47:50.524Z - Current memory usage : 3.66 
+2024-11-20T13:47:53.526Z - Current memory usage : 1.42 
+2024-11-20T13:47:56.527Z - Current memory usage : 1.42 
+2024-11-20T13:47:59.527Z - Current memory usage : 1.29 
+2024-11-20T13:48:02.529Z - Current memory usage : 0.96 
+2024-11-20T13:48:05.530Z - Current memory usage : 0.86 
+2024-11-20T13:48:08.530Z - Current memory usage : 0.85 
+2024-11-20T13:48:11.531Z - Current memory usage : 0.86 
+2024-11-20T13:48:14.532Z - Current memory usage : 0.94 
+2024-11-20T13:48:17.533Z - Current memory usage : 1.10 
+2024-11-20T13:48:20.534Z - Current memory usage : 1.37 
+2024-11-20T13:48:23.535Z - Current memory usage : 0.94 
+2024-11-20T13:48:26.536Z - Current memory usage : 1.33 
+2024-11-20T13:48:29.536Z - Current memory usage : 1.56 
+2024-11-20T13:48:32.537Z - Current memory usage : 1.99 
+2024-11-20T13:48:35.538Z - Current memory usage : 1.09 
+2024-11-20T13:48:38.540Z - Current memory usage : 1.11 

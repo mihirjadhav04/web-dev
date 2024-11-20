@@ -23,7 +23,7 @@ export default function SignupPage() {
     const onSignup = async () => {
         try {
             setLoading(true); // Set loading to true to indicate signup process is in progress
-            const response = await axios.post("/api/users/signup", user); // Send POST request to signup API with user data
+            const response = await axios.post("/api/user/signup", user); // Send POST request to signup API with user data
             console.log("Signup success", response.data);
             toast.success("Successfully Signed Up!");
             router.push("/login"); // Redirect to login page upon successful signup
@@ -116,9 +116,7 @@ export default function SignupPage() {
                 <button
                     onClick={onSignup}
                     disabled={buttonDisabled} // Disable button based on `buttonDisabled` state
-                    className={`w-full py-3 mt-6 rounded-lg font-semibold text-white transition duration-300 ${
-                        buttonDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"
-                    }`}
+                    className={`w-full py-3 mt-6 rounded-lg font-semibold text-white transition duration-300 a`}
                 >
                     {buttonDisabled ? "Complete the form" : "Sign Up"}
                 </button>
